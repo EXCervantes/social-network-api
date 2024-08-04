@@ -1,14 +1,20 @@
-// ObjectId() method for converting studentId string into an ObjectId for querying database
-const { User } = require('../models')
+// Import User model
+const { User, Thought } = require('../models')
 
-
+// Export the User Controller
 module.exports = {
   // Get all the users
-  async getAllUsers(req, res) {
+  async getUsers(req, res) {
     try {
-      const userData = await User.find();
+      const userData = await User.find()
+        .populate({
+          path: 'thought',
+          select: '-__v'
+        })
+        .select('-__v')
+        .sort({ _id: -1 })
 
-      return res.json(userData);
+      res.json(userData);
     } catch (err) {
       console.log(err);
       return res.status(500).json(err);
@@ -19,7 +25,6 @@ module.exports = {
     try {
       const singleUser = await User.findOne({ _id: req.params.userId })
         .select('-__v')
-        .lean();
 
       if (!singleUser) {
         return res.status(404).json({ message: 'No user with that ID!' });
@@ -43,7 +48,11 @@ module.exports = {
   // Update a user
   async updateUser(req, res) {
     try {
-      const userData = await User.findOneAndUpdate(req.params.id, req.body, { new: true });
+      const userData = await User.findOneAndUpdate(
+        { _id: req.params.userId },
+        { $set: req.body },
+        { new: true }
+      );
 
       if (!userData) {
         return res.status(404).json({ message: 'No user with that ID!' });
@@ -64,19 +73,17 @@ module.exports = {
         return res.status(404).json({ message: 'No such user exists' })
       }
 
-      // const thought = await Thought.findOneAndUpdate(
-      //   { thought: req.params.userId },
-      //   { $pull: { thought: req.params.userId } },
-      //   { new: true }
-      // );
+      const thought = await Thought.deleteMany(
+        { _id: { $in: User.thoughts } }
+      );
 
-      // if (!course) {
-      //   return res.status(404).json({
-      //     message: 'User deleted, but no thoughts found',
-      //   });
-      // }
+      if (!thought) {
+        return res.status(404).json({
+          message: 'User deleted, but head empty no thoughts found.',
+        });
+      }
 
-      res.json({ message: 'User successfully deleted' });
+      res.json({ message: 'User and their thoughts successfully deleted.' });
     } catch (err) {
       console.log(err);
       res.status(500).json(err);
@@ -88,14 +95,14 @@ module.exports = {
     try {
       const newFriend = await User.findOneAndUpdate(
         { _id: req.params.userId },
-        { $addToSet: { friends: req.body.friendId || req.params.friendId } },
-        { new: true }
+        { $addToSet: { friends: req.params.friendId } },
+        { runValidators: true, new: true }
       );
 
       if (!newFriend) {
         return res
           .status(404)
-          .json({ message: 'No user found with that ID :(' })
+          .json({ message: 'No friend found with that ID 😢' })
       }
 
       res.json(newFriend);
@@ -109,13 +116,13 @@ module.exports = {
       const deleteFriend = await User.findOneAndUpdate(
         { _id: req.params.userId },
         { $pull: { friends: params.friendId } },
-        { new: true }
+        { runValidators: true, new: true }
       );
 
       if (!deleteFriend) {
         return res
           .status(404)
-          .json({ message: 'No user found with that ID :(' });
+          .json({ message: 'No user found with that ID!' });
       }
 
       res.json(deleteFriend);

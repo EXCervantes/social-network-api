@@ -1,5 +1,30 @@
-const { Schema, model } = require('mongoose');
-const reactionSchema = require('./Reaction');
+const { Schema, model, Types } = require('mongoose');
+
+// Make Reaction Schema the subdocument of Thought
+const reactionSchema = new Schema(
+  {
+    reactionId: {
+      type: Schema.Types.ObjectId,
+      default: () => new Types.ObjectId(),
+    },
+    reactionBody: {
+      type: String,
+      required: true,
+      maxlength: 280,
+    },
+    username: {
+      type: String,
+      required: true,
+    },
+    createdAt: {
+      type: Date,
+      default: Date.now,
+      get: function (time) {
+        time.toLocaleDateString()
+      },
+    },
+  },
+);
 
 // Schema to create Thought model
 const thoughtSchema = new Schema(
@@ -25,12 +50,13 @@ const thoughtSchema = new Schema(
   },
   {
     toJSON: {
-      virtuals: true,
+      // virtuals: true,
       getters: true,
     },
     id: false,
   }
 );
+
 
 // Create a virtual property `reactionCount` that gets the amount of reactions per thought
 thoughtSchema

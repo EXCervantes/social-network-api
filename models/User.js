@@ -34,10 +34,9 @@ const userSchema = new Schema(
   },
   {
     toJSON: {
-      toJSON: {
-        virtuals: true,
-      },
+      virtuals: true,
     },
+
     id: false,
   }
 );
@@ -47,11 +46,6 @@ userSchema
   .get(function () {
     return this.friends.length;
   })
-// To Delete?
-// .set(function (v) {
-//   const [first, last] = v.split("")
-//   this.set({ first, last })
-// });
 
 // Create the User model and export module
 const User = model('User', userSchema);

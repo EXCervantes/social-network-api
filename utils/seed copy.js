@@ -1,5 +1,5 @@
 const connection = require('../config/connection');
-const { User, Thought, Reaction } = require('../models');
+const { User, Thought } = require('../models');
 // Reaction = Comment, Thought = Post
 const {
   getRandomName,
