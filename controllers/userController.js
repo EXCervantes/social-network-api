@@ -6,15 +6,14 @@ module.exports = {
   // Get all the users
   async getUsers(req, res) {
     try {
-      const userData = await User.find()
-        .populate({
-          path: 'thought',
-          select: '-__v'
-        })
+      const users = await User.find()
+        .populate(
+          'thoughts'
+        )
         .select('-__v')
         .sort({ _id: -1 })
 
-      res.json(userData);
+      res.json(users);
     } catch (err) {
       console.log(err);
       return res.status(500).json(err);
@@ -41,6 +40,7 @@ module.exports = {
     try {
       const newUser = await User.create(req.body);
       res.json(newUser);
+      console.log(newUser)
     } catch (err) {
       res.status(500).json(err);
     }
@@ -67,7 +67,7 @@ module.exports = {
   // Delete a user and remove their thoughts
   async deleteUser(req, res) {
     try {
-      const deleteUser = await User.findOneAndRemove({ _id: req.params.userId });
+      const deleteUser = await User.findOneAndDelete({ _id: req.params.userId });
 
       if (!deleteUser) {
         return res.status(404).json({ message: 'No such user exists' })

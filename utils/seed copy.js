@@ -1,12 +1,11 @@
 const connection = require('../config/connection');
 const { User, Thought } = require('../models');
-// Reaction = Comment, Thought = Post
-const {
-  getRandomName,
-  getRandomComments,
-  getRandomPost,
-  genRandomIndex,
-} = require('./data');
+// const {
+//   getRandomName,
+//   getRandomComments,
+//   getRandomPost,
+//   genRandomIndex,
+// } = require('./data');
 
 // Start the seeding runtime timer
 console.time('seeding');
@@ -14,21 +13,27 @@ console.time('seeding');
 // Creates a connection to mongodb
 connection.once('open', async () => {
   // Delete the collections if they exist
-  let postCheck = await connection.db.listCollections({ name: 'posts' }).toArray();
-  if (postCheck.length) {
-    await connection.dropCollection('posts');
+  let userCheck = await connection.db.listCollections({ name: 'users' }).toArray();
+  if (userCheck.length) {
+    await connection.dropCollection('users');
   }
 
-  let commentCheck = await connection.db.listCollections({ name: 'comments' }).toArray();
-  if (commentCheck.length) {
-    await connection.dropCollection('comments');
+  let thoughtCheck = await connection.db.listCollections({ name: 'thoughts' }).toArray();
+  if (thoughtCheck.length) {
+    await connection.dropCollection('thoughts');
   }
 
   // Empty arrays for randomly generated posts and comments
-  const comments = [...getRandomComments(10)];
-  const posts = [];
+  const users = [];
+  const thoughts = [];
 
   // Makes comments array
+  for (let i = 0; i < usernames.length; i++) {
+    const userData = {
+      username: usernames[i],
+      email: email[i],
+    };
+  }
   const makePost = (text) => {
     posts.push({
       text,
@@ -44,11 +49,11 @@ connection.once('open', async () => {
   comments.forEach(() => makePost(getRandomPost(10)));
 
   // Wait for the posts array to be inserted into the database
-  await Post.insertMany(posts);
+  await User.insertMany(users);
 
   // Log out a pretty table for comments and posts
-  console.table(comments);
-  console.table(posts);
+  console.table(users);
+  console.table(thoughts);
   console.timeEnd('Seeding complete 🌱 🌞');
   process.exit(0);
 });
