@@ -15,13 +15,9 @@
 
 ## Description
 
-This is the backend API for a Social Network using MongoDB. It uses the Mongoose ODM and Express.js for handling the routing. 
+This is the backend API for a Social Network using MongoDB. It uses [MongoDB](https://www.mongodb.com/) as the NoSQL database manager, [Express.js](https://expressjs.com/) for handling the routing along with [Mongoose](https://www.npmjs.com/package/mongoose) ODM to handle database interaction. The Node language manager uses those packages to perform CRUD actions such as to create, update, get, and delete the users, their "thoughts', reactions to thoughts, and managing friends of users. To easily interact with these API calls a user can use an application such as [Insomnia](https://insomnia.rest/).
 
-This is an E-commerce back end application using REST API. It uses packages such as "PostgreSQL Node client" and "Dotenv" and [Express.js](https://expressjs.com/) along with [Sequelize](https://sequelize.org/) to handle database interaction. The Node language manager uses those packages to perform CRUD actions such as to create, update, get, and delete the categories, products, and tags of the E-commerce database. To easily interact with these API calls a user can use an application such as [Insomnia](https://insomnia.rest/).
-
-Creating this application helped practice more on utilizing Sequelize to manage the database in a more quicker way. There were some challenges encountered in this project such so figuring out how to update and post products following a set criteria.
-
-Further development involves implementing a front end for ease of access for interacting directly with the database.
+Creating this application taught me a new way to manage the database without a set relational structure. There was intensive learning of the new ways to setup managing a database in MongoDB and using Mongoose. Further development involves implementing a front end for a nicer appearance and direct user interaction with the app.
 
 ## Technologies and Packages Used
 
