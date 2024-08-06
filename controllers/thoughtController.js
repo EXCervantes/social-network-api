@@ -35,11 +35,10 @@ module.exports = {
       if (!thoughtData) {
         res.status(404).json({ message: 'Thought could not be created...' })
       }
-      res.json(thoughtData);
 
       const userData = await User.findOneAndUpdate(
         { userId: req.params.userId },
-        { $push: { thought: { thought: thoughtText } } },
+        { $push: { thought: { thought: Thought.thoughtText } } },
         { runValidators: true, new: true },
       );
       if (!userData) {
@@ -76,7 +75,7 @@ module.exports = {
   // Delete a thought
   async deleteThought(req, res) {
     try {
-      const removeThought = await Thought.findOneAndDelete({ thoughtId: req.params.thoughtId });
+      const removeThought = await Thought.findOneAndDelete({ _id: req.params.thoughtId });
 
       if (!removeThought) {
         return res.status(404).json({ message: 'No thought with that ID' });
