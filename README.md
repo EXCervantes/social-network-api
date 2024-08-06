@@ -23,64 +23,23 @@ Creating this application taught me a new way to manage the database without a s
 
 - [Node.js](https://nodejs.org/en)
 - [Express.js](https://expressjs.com/)
-- [Sequelize](https://sequelize.org/)
-- [PostgreSQL Node client](https://www.npmjs.com/package/pg)
-- [Dotenv](https://www.npmjs.com/package/dotenv)
+- [Mongoose](https://www.npmjs.com/package/mongoose)
+- [MongoDB](https://www.mongodb.com/)
 - [Insomnia](https://insomnia.rest/)
   
 ## Installation
 
-First to use this application head to [E-Commerce Backend](https://github.com/EXCervantes/social-network-api) and clone the repository. To learn how to clone a repository checkout this guide [Cloning a repository](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository).
+First to use this application head to [Social Network API](https://github.com/EXCervantes/social-network-api) and clone the repository. To learn how to clone a repository checkout this guide [Cloning a repository](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository).
 
-You must have `node` installed on your system. Go [here](https://nodejs.org/en/learn/getting-started/how-to-install-nodejs) for instructions on how to do so. To properly run this application you must have [PostgreSQL](https://www.postgresql.org/) installed on your system. Run `npm i` to install the necessary dependencies onto your system.
+You must have `node` installed on your system. Go [here](https://nodejs.org/en/learn/getting-started/how-to-install-nodejs) for instructions on how to do so. To properly run this application you must have [MongoDB](https://www.mongodb.com/) installed on your system. Run `npm i` to install the necessary dependencies onto your system.
 
-This application utilizes a package that requires a file named `.env` to be created on the user's native system in the root directory of the cloned repo. The following lines must exist in this file:
-
-```md
-DB_NAME='ecommerce_db'
-DB_USER='postgres'
-DB_PASSWORD='user's password created during PostgreSQL install'
-```
+This application runs in the Terminal of VSCode and must be initialized there before REST API clients like Insomnia can interact with the application properly. More on that in the section below.
 
 ## Usage
 
-Once Node, PostgreSQL, and the necessary dependencies have been installed as well as the `.env` file created a user can then run PostgreSQL to create a database in the terminal with the following commands.
+Once Node, MongoDB, and the necessary dependencies have been installed, initialize the application in the Terminal in VSCode and run `npm run dev` or `npm run start`. Now the server is active and a user can use an application such as [Insomnia](https://insomnia.rest/) to perform the CRUD operations with this application.
 
-First navigate to the database directory
-
-```md
-cd db
-```
-
-Then login to Postgres
-
-```md
-psql -U postgres
-```
-
-Then run the command to create the database
-
-```md
-\i schema.sql
-```
-
-Finally use the following commands in sequential order to quit Postgres then navigate to the home directory
-
-```md
-\q
-```
-
-```md
-cd ..
-```
-
-The next step is to seed the database with the following command in the terminal
-
-```md
-npm run seed
-```
-
-To run the application open the Terminal or GitBash in VSCode and run `node server.js` or `npm start`. Now the server is active and a user can use an application such as [Insomnia](https://insomnia.rest/) to perform the CRUD operations with this application.
+There are full CRUD operations for "users" and "thoughts" also known as posts, and both create and delete methods for "reactions", or comments to thoughts and a user's friends. Also note deleting a user will also remove that particular user's thoughts from the database.
 
 ### Video Demonstrating Application In Use
 
