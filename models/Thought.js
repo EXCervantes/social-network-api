@@ -1,3 +1,4 @@
+// Import Mongoose dependency
 const { Schema, model, Types } = require('mongoose');
 
 // Make Reaction Schema the subdocument of Thought
@@ -56,14 +57,14 @@ const thoughtSchema = new Schema(
 );
 
 
-// Create a virtual property `reactionCount` that gets the amount of reactions per thought
+// Create a virtual property `reactionCount` that gets the amount of reactions for thought
 thoughtSchema
   .virtual('reactionCount')
   .get(function () {
     return this.reactions.length;
   });
 
-// Create the Thought model and export module
+// Initialize the Thought model and export module
 const Thought = model('Thought', thoughtSchema);
 
 module.exports = Thought;

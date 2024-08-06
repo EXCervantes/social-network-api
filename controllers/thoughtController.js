@@ -6,7 +6,7 @@ module.exports = {
   async getThoughts(req, res) {
     try {
       const thoughts = await Thought.find()
-      console.log(thoughts)
+
       res.json(thoughts);
     } catch (err) {
       console.log(err);
@@ -99,7 +99,6 @@ module.exports = {
         { runValidators: true, new: true }
       );
 
-      console.log(thoughtReaction)
       if (!thoughtReaction) {
         return res.status(404).json({ message: 'No thought with that ID' });
       }
@@ -112,13 +111,12 @@ module.exports = {
   // Delete reaction to Thought by ID
   async deleteReaction(req, res) {
     try {
-      console.log("req.params", req.params)
       const removeReaction = await Thought.findOneAndUpdate(
         { _id: req.params.thoughtId },
         { $pull: { reactions: { reactionId: req.body.reactionId } } },
         { runValidators: true, new: true }
       );
-      console.log("removeReaction", removeReaction)
+
       if (!removeReaction) {
         return res.status(404).json({ message: 'No thought here. Try again!' });
       }

@@ -1,4 +1,4 @@
-// Import User model
+// Import User and Thought models
 const { User, Thought } = require('../models')
 
 // Export the User Controller
@@ -70,7 +70,7 @@ module.exports = {
       if (!deleteUser) {
         return res.status(404).json({ message: 'No such user exists' })
       }
-
+      // Use cascading to remove the user's associated thoughts
       const thought = await Thought.deleteMany(
         { _id: { $in: User.thoughts } }
       );
