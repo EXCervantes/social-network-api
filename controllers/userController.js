@@ -103,7 +103,9 @@ module.exports = {
           .json({ message: 'No friend found with that ID 😢' })
       }
 
-      res.status(200).json({ message: 'Friend added! 😄' });
+      res
+        .status(200)
+        .json({ message: 'Friend added! 😄' });
     } catch (err) {
       res.status(500).json(err);
     }
@@ -123,7 +125,8 @@ module.exports = {
           .json({ message: 'No user found with that ID!' });
       }
 
-      res.json(deleteFriend);
+      res
+        .json({ message: 'Friend removed 😟' });
     } catch (err) {
       res.status(500).json(err);
     }
