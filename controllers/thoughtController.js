@@ -48,9 +48,7 @@ module.exports = {
           .json({ message: 'No user found with that ID :(' })
       }
 
-      res
-        .status(200)
-        .json({ message: 'Thought successfully updated! 🎉' });
+      res.json(thoughtData);
     } catch (err) {
       console.log(err);
       res.status(500).json(err);
@@ -102,7 +100,7 @@ module.exports = {
       if (!thoughtReaction) {
         return res.status(404).json({ message: 'No thought with that ID' });
       }
-      res.status(200).json({ message: 'Added Reaction successfully!' });
+      res.json(thoughtReaction);
     } catch (err) {
       console.log(err);
       res.status(500).json(err);
