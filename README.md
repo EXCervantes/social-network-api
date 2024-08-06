@@ -54,9 +54,9 @@ Here is a [link]() to a video demonstrating how this application works.
 
 ## Credits
 
-Referenced for examples of include with attributes in Sequelize.
+Referenced for how to cascade delete the user's thoughts from the database in MongoDB.
 
-"_node.js - How to use an include with attributes with sequelize? - Stack Overflow_". (2018, April 25). Stack Overflow. Retrieved June 26, 2024, from https://stackoverflow.com/questions/21883484/how-to-use-an-include-with-attributes-with-sequelize
+"_node.js - MongoDB Delete all documents that created by user when deleting user - Stack Overflow_". (2018, June 12). Stack Overflow. Retrieved August 3, 2024, from https://stackoverflow.com/questions/50814052/mongodb-delete-all-documents-that-created-by-user-when-deleting-user
   
 ## License
 
