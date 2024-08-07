@@ -47,10 +47,10 @@ Here is a [link to a video](https://drive.google.com/file/d/15h-1O9tlEhznQwDWYTZ
 
 ### Screenshots of the Application
 
-![Users](assets/images/socialnetworkapiscreen1.jpg)
-![Thoughts](assets/images/socialnetworkapiscreen2.jpg)
-![Reactions](assets/images/socialnetworkapiscreen3.jpg)
-![Friends](assets/images/socialnetworkapiscreen4.jpg)
+![Users](images/socialnetworkapiscreen1.jpg)
+![Thoughts](images/socialnetworkapiscreen2.jpg)
+![Reactions](images/socialnetworkapiscreen3.jpg)
+![Friends](images/socialnetworkapiscreen4.jpg)
 
 ## Credits
 
