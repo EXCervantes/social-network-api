@@ -31,7 +31,7 @@ Creating this application taught me a new way to manage the database without a s
 
 First to use this application head to [Social Network API](https://github.com/EXCervantes/social-network-api) and clone the repository. To learn how to clone a repository checkout this guide [Cloning a repository](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository).
 
-You must have `node` installed on your system. Go [here](https://nodejs.org/en/learn/getting-started/how-to-install-nodejs) for instructions on how to do so. To properly run this application you must have [MongoDB](https://www.mongodb.com/) installed on your system. Run `npm i` to install the necessary dependencies onto your system.
+You must have `Node` installed on your system. Go [here](https://nodejs.org/en/learn/getting-started/how-to-install-nodejs) for instructions on how to do so. To properly run this application you must have [MongoDB](https://www.mongodb.com/) installed on your system. Run `npm i` to install the necessary dependencies onto your system.
 
 This application runs in the Terminal of VSCode and must be initialized there before REST API clients like Insomnia can interact with the application properly. More on that in the section below.
 
