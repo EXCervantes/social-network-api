@@ -43,7 +43,7 @@ There are full CRUD operations for "users" and "thoughts" also known as posts, a
 
 ### Video Demonstrating Application In Use
 
-Here is a [link]() to a video demonstrating how this application works.
+Here is a [link to a video](https://drive.google.com/file/d/15h-1O9tlEhznQwDWYTZEwj3JPlkkVsRz/view?t=11) demonstrating how this application works.
 
 ### Screenshots of the Application
 
