@@ -47,10 +47,10 @@ Here is a [link]() to a video demonstrating how this application works.
 
 ### Screenshots of the Application
 
-![GET](assets/images/ecommercebackendscreen1.jpg)
-![PUT](assets/images/ecommercebackendscreen2.jpg)
-![POST](assets/images/ecommercebackendscreen3.jpg)
-![DELETE](assets/images/ecommercebackendscreen4.jpg)
+![Users](assets/images/socialnetworkapiscreen1.jpg)
+![Thoughts](assets/images/socialnetworkapiscreen2.jpg)
+![Reactions](assets/images/socialnetworkapiscreen3.jpg)
+![Friends](assets/images/socialnetworkapiscreen4.jpg)
 
 ## Credits
 
